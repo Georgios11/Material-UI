@@ -25,3 +25,39 @@ const Test = () => {
 
 export default Test;
 ```
+
+# Buttons
+
+[**Button Properties ->**](https://mui.com/material-ui/react-button/)
+
+-   Predefined styles available
+
+```javascript
+const Test = () => {
+	return (
+		<>
+			<Button
+				variant="contained"
+				size="large"
+				sx={{ margin: 3 }}
+				color="success"
+				onClick={(e) => console.log("Click")}
+				disabled
+			>
+				First
+			</Button>
+			<Button
+				variant="outlined"
+				size="medium"
+				sx={{ margin: 3 }}
+				color="error"
+			>
+				Second
+			</Button>
+			<Button variant="text" size="small" sx={{ margin: 3 }} color="info">
+				Third
+			</Button>
+		</>
+	);
+};
+```
