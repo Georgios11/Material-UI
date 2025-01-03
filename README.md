@@ -100,3 +100,112 @@ const Test = () => {
 ```
 
 # Form handling with Textfields
+
+```javascript
+const Test = () => {
+	const [inputs, setInputs] = useState({
+		name: "",
+		email: "",
+		password: "",
+	});
+	const handleChange = (e) => {
+		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(inputs);
+		setInputs({
+			name: "",
+			email: "",
+			password: "",
+		});
+	};
+	return (
+		<>
+			<form onSubmit={handleSubmit}>
+				<TextField
+					name="name"
+					value={inputs.name}
+					onChange={handleChange}
+					type={"text"}
+					placeholder="Name"
+					variant="outlined"
+					sx={{ margin: 3 }}
+				/>
+				<TextField
+					value={inputs.email}
+					name="email"
+					type="email"
+					onChange={handleChange}
+					placeholder="Email"
+					variant="standard"
+					sx={{ margin: 3 }}
+				/>
+				<TextField
+					value={inputs.password}
+					name="password"
+					type="password"
+					sx={{ margin: 3 }}
+					placeholder="Password"
+					variant="filled"
+					onChange={handleChange}
+				/>
+				<Button type="submit">Submit</Button>
+			</form>
+			<Typography>{inputs.name}</Typography>
+			<Typography>{inputs.email}</Typography>
+			<Typography>{inputs.password}</Typography>
+		</>
+	);
+};
+```
+
+# Handling Form with Checkboxes
+
+[**Checkbox Docs ->**](https://mui.com/material-ui/react-checkbox/)
+
+-   defaultCheck
+
+```javascript
+
+	const [inputs, setInputs] = useState({
+		name: "",
+		email: "",
+		password: "",
+		subscribe: false,
+	});
+	const handleChange = (e) => {
+		const { name, value, type, checked } = e.target;
+		console.log(type);
+		console.log(name);
+		console.log(value);
+		setInputs((prev) => ({
+			...prev,
+			[name]: type === "checkbox" ? !checked : value,
+		}));
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(inputs);
+		setInputs({
+			name: "",
+			email: "",
+			password: "",
+			subscribe: false,
+		});
+	};
+	<FormGroup>
+					<FormControlLabel
+						control={
+							<Checkbox
+								type="checkbox"
+								onChange={handleChange}
+								name="subscribe"
+								value={inputs.subscribe}
+							/>
+						}
+						label="Subscribe"
+					/>
+```

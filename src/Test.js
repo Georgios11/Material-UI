@@ -1,13 +1,28 @@
 import React, { useState } from "react";
-import { Button, TextField, Typography } from "@mui/material";
+import {
+	Button,
+	Checkbox,
+	FormControlLabel,
+	FormGroup,
+	TextField,
+	Typography,
+} from "@mui/material";
 const Test = () => {
 	const [inputs, setInputs] = useState({
 		name: "",
 		email: "",
 		password: "",
+		subscribe: false,
 	});
 	const handleChange = (e) => {
-		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+		const { name, value, type, checked } = e.target;
+		console.log(type);
+		console.log(name);
+		console.log(value);
+		setInputs((prev) => ({
+			...prev,
+			[name]: type === "checkbox" ? !checked : value,
+		}));
 	};
 
 	const handleSubmit = (e) => {
@@ -17,11 +32,19 @@ const Test = () => {
 			name: "",
 			email: "",
 			password: "",
+			subscribe: false,
 		});
 	};
 	return (
 		<>
-			<form onSubmit={handleSubmit}>
+			<form
+				onSubmit={handleSubmit}
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					maxWidth: "60vw",
+				}}
+			>
 				<TextField
 					name="name"
 					value={inputs.name}
@@ -49,6 +72,19 @@ const Test = () => {
 					variant="filled"
 					onChange={handleChange}
 				/>
+				<FormGroup>
+					<FormControlLabel
+						control={
+							<Checkbox
+								type="checkbox"
+								onChange={handleChange}
+								name="subscribe"
+								value={inputs.subscribe}
+							/>
+						}
+						label="Subscribe"
+					/>
+				</FormGroup>
 				<Button type="submit">Submit</Button>
 			</form>
 			<Typography>{inputs.name}</Typography>
