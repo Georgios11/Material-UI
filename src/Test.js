@@ -1,29 +1,30 @@
-import React from "react";
-import { Button } from "@mui/material";
+import React, { useState } from "react";
+import { Button, TextField, Typography } from "@mui/material";
 const Test = () => {
+	const [name, setName] = useState("");
 	return (
 		<>
-			<Button
-				variant="contained"
-				size="large"
-				sx={{ margin: 3 }}
-				color="success"
-				onClick={(e) => console.log("Click")}
-				disabled
-			>
-				First
-			</Button>
-			<Button
+			<TextField
+				value={name}
+				onChange={(e) => setName(e.target.value)}
+				type={"text"}
+				placeholder="Name"
 				variant="outlined"
-				size="medium"
 				sx={{ margin: 3 }}
-				color="error"
-			>
-				Second
-			</Button>
-			<Button variant="text" size="small" sx={{ margin: 3 }} color="info">
-				Third
-			</Button>
+			/>
+			<TextField
+				type="email"
+				placeholder="Email"
+				variant="standard"
+				sx={{ margin: 3 }}
+			/>
+			<TextField
+				type="password"
+				sx={{ margin: 3 }}
+				placeholder="Password"
+				variant="filled"
+			/>
+			<Typography>{name}</Typography>
 		</>
 	);
 };
