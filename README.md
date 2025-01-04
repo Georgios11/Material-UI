@@ -238,3 +238,24 @@ const Test = () => {
 [**AppBar API docs ->**](https://mui.com/material-ui/api/app-bar/)
 
 -   A toolbar provides a basic structure for adding elements
+
+```javascript
+const Test = () => {
+	return (
+		<div>
+			<AppBar>
+				<Toolbar>
+					<Typography>Logo</Typography>
+					<Button
+						variant={"contained"}
+						color="warning"
+						sx={{ ml: "auto " }}
+					>
+						Login
+					</Button>
+				</Toolbar>
+			</AppBar>
+		</div>
+	);
+};
+```
