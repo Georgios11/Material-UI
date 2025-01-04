@@ -259,3 +259,35 @@ const Test = () => {
 	);
 };
 ```
+
+# Tabs
+
+-   Helps to switch between different views and navigations.
+
+[**Tabs docs ->**](https://mui.com/material-ui/react-tabs/)
+
+```javascript
+const Test = () => {
+	//initial value must be undefined
+	const [value, setValue] = useState();
+
+	return (
+		<div>
+			<AppBar>
+				<Toolbar>
+					<Tabs
+						indicatorColor="secondary"
+						textColor="inherit"
+						value={value}
+						onChange={(e, val) => setValue(val)}
+					>
+						<Tab label="First" />
+						<Tab label="Second" />
+						<Tab label="Third" />
+					</Tabs>
+				</Toolbar>
+			</AppBar>
+		</div>
+	);
+};
+```
