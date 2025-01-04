@@ -7,6 +7,7 @@ import {
 	FormControlLabel,
 	FormGroup,
 	InputLabel,
+	Menu,
 	MenuItem,
 	Radio,
 	RadioGroup,
@@ -19,24 +20,29 @@ import {
 } from "@mui/material";
 const Test = () => {
 	//initial value must be undefined
-	const [value, setValue] = useState();
-
+	const [anchorEl, setAnchorEl] = useState(null);
+	const [open, setOpen] = useState(false);
+	const handleClose = () => {
+		setAnchorEl(null);
+		setOpen(false);
+	};
+	const handleClick = (e) => {
+		setAnchorEl(e.currentTarget);
+		setOpen(true);
+	};
 	return (
 		<div>
-			<AppBar>
-				<Toolbar>
-					<Tabs
-						indicatorColor="secondary"
-						textColor="inherit"
-						value={value}
-						onChange={(e, val) => setValue(val)}
-					>
-						<Tab label="First" />
-						<Tab label="Second" />
-						<Tab label="Third" />
-					</Tabs>
-				</Toolbar>
-			</AppBar>
+			<Button variant="contained" onClick={handleClick}>
+				Open Menu
+			</Button>
+			<Button variant="contained" onClick={handleClick}>
+				Open Menu again
+			</Button>
+			<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+				<MenuItem onClick={handleClose}>Profile</MenuItem>
+				<MenuItem onClick={handleClose}>Balance</MenuItem>
+				<MenuItem onClick={handleClose}>Logout</MenuItem>
+			</Menu>
 		</div>
 	);
 };
