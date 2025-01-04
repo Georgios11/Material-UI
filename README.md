@@ -209,3 +209,16 @@ const Test = () => {
 						label="Subscribe"
 					/>
 ```
+
+# Select Dropdown
+
+```javascript
+<FormControl fullWidth>
+	<InputLabel>Age</InputLabel>
+	<Select name="age" value={inputs.age} label="Age" onChange={handleChange}>
+		<MenuItem value={10}>10</MenuItem>
+		<MenuItem value={20}>20</MenuItem>
+		<MenuItem value={30}>30</MenuItem>
+	</Select>
+</FormControl>
+```

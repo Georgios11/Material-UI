@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import {
 	Button,
 	Checkbox,
+	FormControl,
 	FormControlLabel,
 	FormGroup,
+	InputLabel,
+	MenuItem,
+	Select,
 	TextField,
 	Typography,
 } from "@mui/material";
@@ -13,6 +17,7 @@ const Test = () => {
 		email: "",
 		password: "",
 		subscribe: false,
+		age: "",
 	});
 	const handleChange = (e) => {
 		const { name, value, type, checked } = e.target;
@@ -90,6 +95,20 @@ const Test = () => {
 			<Typography>{inputs.name}</Typography>
 			<Typography>{inputs.email}</Typography>
 			<Typography>{inputs.password}</Typography>
+
+			<FormControl fullWidth>
+				<InputLabel>Age</InputLabel>
+				<Select
+					name="age"
+					value={inputs.age}
+					label="Age"
+					onChange={handleChange}
+				>
+					<MenuItem value={10}>10</MenuItem>
+					<MenuItem value={20}>20</MenuItem>
+					<MenuItem value={30}>30</MenuItem>
+				</Select>
+			</FormControl>
 		</>
 	);
 };
