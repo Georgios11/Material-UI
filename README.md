@@ -232,3 +232,9 @@ const Test = () => {
 	<FormControlLabel value="other" control={<Radio />} label="Other" />
 </RadioGroup>
 ```
+
+# AppBar And Toolbar
+
+[**AppBar API docs ->**](https://mui.com/material-ui/api/app-bar/)
+
+-   A toolbar provides a basic structure for adding elements
