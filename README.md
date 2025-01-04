@@ -222,3 +222,13 @@ const Test = () => {
 	</Select>
 </FormControl>
 ```
+
+# Radio Buttons
+
+```javascript
+<RadioGroup defaultValue="female" name="gender" onChange={handleChange}>
+	<FormControlLabel value="female" control={<Radio />} label="Female" />
+	<FormControlLabel value="male" control={<Radio />} label="Male" />
+	<FormControlLabel value="other" control={<Radio />} label="Other" />
+</RadioGroup>
+```
