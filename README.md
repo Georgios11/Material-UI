@@ -297,3 +297,34 @@ const Test = () => {
 [**Menu docs ->**](https://mui.com/material-ui/react-menu/)
 
 -   It used to display the list of choices which we can select. They are just a list of choices, like a dashboard menu in which we can select an option of where we want to go. And it works dynamically on a click of an element like a button. Or we can have a state of when to open and it has a menu item component to add the content inside that, and each menu item can have its own callback function.
+
+```javascript
+const Test = () => {
+	//initial value must be undefined
+	const [anchorEl, setAnchorEl] = useState(null);
+	const [open, setOpen] = useState(false);
+	const handleClose = () => {
+		setAnchorEl(null);
+		setOpen(false);
+	};
+	const handleClick = (e) => {
+		setAnchorEl(e.currentTarget);
+		setOpen(true);
+	};
+	return (
+		<div>
+			<Button variant="contained" onClick={handleClick}>
+				Open Menu
+			</Button>
+			<Button variant="contained" onClick={handleClick}>
+				Open Menu again
+			</Button>
+			<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+				<MenuItem onClick={handleClose}>Profile</MenuItem>
+				<MenuItem onClick={handleClose}>Balance</MenuItem>
+				<MenuItem onClick={handleClose}>Logout</MenuItem>
+			</Menu>
+		</div>
+	);
+};
+```
