@@ -7,6 +7,11 @@ import {
 	CardContent,
 	CardMedia,
 	Checkbox,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
 	FormControl,
 	FormControlLabel,
 	FormGroup,
@@ -23,36 +28,21 @@ import {
 	Typography,
 } from "@mui/material";
 const Test = () => {
-	//initial value must be undefined
-	const [anchorEl, setAnchorEl] = useState(null);
 	const [open, setOpen] = useState(false);
-	const handleClose = () => {
-		setAnchorEl(null);
-		setOpen(false);
-	};
-	const handleClick = (e) => {
-		setAnchorEl(e.currentTarget);
-		setOpen(true);
-	};
-	const imgUrl = "/istockphoto-811210906-1024x1024.jpg";
 	return (
-		<Card sx={{ maxWidth: 345 }}>
-			<CardMedia sx={{ height: 320 }} image={`${imgUrl}`} />
-			<CardContent>
-				<Typography gutterBottom variant="h5" component="div">
-					Lizard
-				</Typography>
-				<Typography variant="body2" sx={{ color: "text.secondary" }}>
-					Lizards are a widespread group of squamate reptiles, with
-					over 6,000 species, ranging across all continents except
-					Antarctica
-				</Typography>
-			</CardContent>
-			<CardActions>
-				<Button size="small">Share</Button>
-				<Button size="small">Learn More</Button>
-			</CardActions>
-		</Card>
+		<div>
+			<Button onClick={() => setOpen(true)}>Open Dialog</Button>
+			<Dialog open={open} onClose={() => setOpen(false)}>
+				<DialogTitle>Dialog Title</DialogTitle>
+				<DialogContent>
+					<DialogContentText>Ask user for action</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => setOpen(false)}> Confirm</Button>
+					<Button onClick={() => setOpen(false)}> Cancel</Button>
+				</DialogActions>
+			</Dialog>
+		</div>
 	);
 };
 

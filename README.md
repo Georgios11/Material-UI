@@ -163,6 +163,8 @@ const Test = () => {
 
 # Handling Form with Checkboxes
 
+Checkboxes allow the user to select one or more items from a set.
+
 [**Checkbox Docs ->**](https://mui.com/material-ui/react-checkbox/)
 
 -   defaultCheck
@@ -211,6 +213,8 @@ const Test = () => {
 ```
 
 # Select Dropdown
+
+Select components are used for collecting user provided information from a list of options.
 
 ```javascript
 <FormControl fullWidth>
@@ -262,7 +266,10 @@ const Test = () => {
 
 # Tabs
 
--   Helps to switch between different views and navigations.
+Tabs are implemented using a collection of related components:
+
+-   <Tab /> - the tab element itself. Clicking on a tab displays its corresponding panel.
+    -   <Tabs /> - the container that houses the tabs. Responsible for handling focus and keyboard navigation between tabs.
 
 [**Tabs docs ->**](https://mui.com/material-ui/react-tabs/)
 
@@ -331,7 +338,15 @@ const Test = () => {
 
 # Card
 
-[**Card docs ->**](https://mui.com/material-ui/react-card/)
+-   Cards are surfaces that display content and actions on a single topic. The Material UI Card component includes several complementary utility components to handle various use cases:
+    -   Card: a surface-level container for grouping related components.
+    -   Card Content: the wrapper for the Card content.
+    -   Card Header: an optional wrapper for the Card header.
+    -   Card Media: an optional container for displaying images, videos, etc.
+    -   Card Actions: an optional wrapper that groups a set of buttons.
+    -   Card Action Area: an optional wrapper that allows users to interact with the specified area of the
+    -   Card.
+        [**Card docs ->**](https://mui.com/material-ui/react-card/)
 
 ```javascript
 const imgUrl = "/istockphoto-811210906-1024x1024.jpg";
@@ -354,3 +369,7 @@ return (
 	</Card>
 );
 ```
+
+# Dialog
+
+-   A Dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken. Dialogs are purposefully interruptive, so they should be used sparingly.
