@@ -17,6 +17,7 @@ import {
 	FormControlLabel,
 	FormGroup,
 	InputLabel,
+	Link,
 	Menu,
 	MenuItem,
 	Modal,
@@ -30,19 +31,17 @@ import {
 	Typography,
 } from "@mui/material";
 const Test = () => {
-	const [open, setOpen] = useState(false);
 	return (
 		<div>
-			<Button onClick={() => setOpen(true)}>Open Modal</Button>
-
-			<Modal open={open} onClose={() => setOpen(false)}>
-				<Box position="absolute" top="50%" left="50%">
-					<Typography>This is a Modal</Typography>
-					<Button variant="contained" onClick={() => setOpen(false)}>
-						Close
-					</Button>
-				</Box>
-			</Modal>
+			<Link
+				href="https://www.google.com"
+				target="_blank"
+				underline="none"
+				color="secondary"
+				variant="h4"
+			>
+				Visit Google
+			</Link>
 		</div>
 	);
 };

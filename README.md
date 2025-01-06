@@ -436,3 +436,25 @@ const Test = () => {
 	);
 };
 ```
+
+# Link
+
+[**Link docs ->**](https://mui.com/material-ui/react-link/)
+
+```javascript
+const Test = () => {
+	return (
+		<div>
+			<Link
+				href="https://www.google.com"
+				target="_blank"
+				underline="none"
+				color="secondary"
+				variant="h4"
+			>
+				Visit Google
+			</Link>
+		</div>
+	);
+};
+```
