@@ -8,6 +8,7 @@ import {
 	CardContent,
 	CardMedia,
 	Checkbox,
+	Container,
 	Dialog,
 	DialogActions,
 	DialogContent,
@@ -33,15 +34,32 @@ import {
 const Test = () => {
 	return (
 		<div>
-			<Link
-				href="https://www.google.com"
-				target="_blank"
-				underline="none"
-				color="secondary"
-				variant="h4"
+			<Container
+				sx={{
+					background: "pink",
+					display: "flex",
+					justifyContent: "center",
+				}}
+				maxWidth="xs"
 			>
-				Visit Google
-			</Link>
+				This is XS
+			</Container>
+			<br />
+			<Container sx={{ background: "pink" }} maxWidth="sm">
+				This is S
+			</Container>
+			<br />
+			<Container sx={{ background: "pink" }} maxWidth="md">
+				This is M
+			</Container>
+			<br />
+			<Container sx={{ background: "pink" }} maxWidth="lg">
+				This is L
+			</Container>
+			<br />
+			<Container sx={{ background: "pink" }} maxWidth="xl">
+				This is XL
+			</Container>
 		</div>
 	);
 };

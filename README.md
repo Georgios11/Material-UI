@@ -458,3 +458,44 @@ const Test = () => {
 	);
 };
 ```
+
+# Container
+
+[**Container docs ->**](https://mui.com/material-ui/react-container/)
+
+The container centers your content horizontally. It's the most basic layout element. While containers can be nested, most layouts do not require a nested container.
+
+```javascript
+const Test = () => {
+	return (
+		<div>
+			<Container
+				sx={{
+					background: "pink",
+					display: "flex",
+					justifyContent: "center",
+				}}
+				maxWidth="xs"
+			>
+				This is XS
+			</Container>
+			<br />
+			<Container sx={{ background: "pink" }} maxWidth="sm">
+				This is S
+			</Container>
+			<br />
+			<Container sx={{ background: "pink" }} maxWidth="md">
+				This is M
+			</Container>
+			<br />
+			<Container sx={{ background: "pink" }} maxWidth="lg">
+				This is L
+			</Container>
+			<br />
+			<Container sx={{ background: "pink" }} maxWidth="xl">
+				This is XL
+			</Container>
+		</div>
+	);
+};
+```
