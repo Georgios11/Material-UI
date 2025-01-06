@@ -499,3 +499,53 @@ const Test = () => {
 	);
 };
 ```
+
+# Lists
+
+[**Lists docs ->**](https://mui.com/material-ui/react-list/)
+
+Lists present information in a concise, easy-to-follow format through a continuous, vertical index of text or images.
+
+Material UI Lists are implemented using a collection of related components:
+
+-   List: a wrapper for list items. Renders as a <ul> by default.
+-   List Item: a common list item. Renders as an <li> by default.
+-   List Item Button: an action element to be used inside a list item.
+-   List Item Icon: an icon to be used inside of a list item.
+-   List Item Avatar: an avatar to be used inside of a list item.
+-   List Item Text: a container inside a list item, used to display text content.
+-   List Divider: a separator between list items.
+-   List Subheader: a label for a nested list.
+
+```javascript
+const Test = () => {
+	const array = ["First", "Second", "Third"];
+
+	const [open, setOpen] = useState(false);
+	return (
+		<Box>
+			<List>
+				<ListItem divider>
+					<ListItemButton
+						onClick={() => setOpen((prevOpen) => !prevOpen)}
+					>
+						<ChevronRightIcon />
+						<ListItemText primary={"Expand List"} />
+					</ListItemButton>
+				</ListItem>
+			</List>
+			<Collapse in={open}>
+				<List sx={{ ml: "25px", width: 300, background: "gray" }}>
+					{array.map((item, i) => (
+						<ListItem divider key={i}>
+							<ListItemButton>
+								<ListItemText primary={item} />
+							</ListItemButton>
+						</ListItem>
+					))}
+				</List>
+			</Collapse>
+		</Box>
+	);
+};
+```

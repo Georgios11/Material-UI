@@ -8,6 +8,7 @@ import {
 	CardContent,
 	CardMedia,
 	Checkbox,
+	Collapse,
 	Container,
 	Dialog,
 	DialogActions,
@@ -17,8 +18,14 @@ import {
 	FormControl,
 	FormControlLabel,
 	FormGroup,
+	Icon,
 	InputLabel,
 	Link,
+	List,
+	ListItem,
+	ListItemButton,
+	ListItemIcon,
+	ListItemText,
 	Menu,
 	MenuItem,
 	Modal,
@@ -31,36 +38,36 @@ import {
 	Toolbar,
 	Typography,
 } from "@mui/material";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 const Test = () => {
+	const array = ["First", "Second", "Third"];
+
+	const [open, setOpen] = useState(false);
 	return (
-		<div>
-			<Container
-				sx={{
-					background: "pink",
-					display: "flex",
-					justifyContent: "center",
-				}}
-				maxWidth="xs"
-			>
-				This is XS
-			</Container>
-			<br />
-			<Container sx={{ background: "pink" }} maxWidth="sm">
-				This is S
-			</Container>
-			<br />
-			<Container sx={{ background: "pink" }} maxWidth="md">
-				This is M
-			</Container>
-			<br />
-			<Container sx={{ background: "pink" }} maxWidth="lg">
-				This is L
-			</Container>
-			<br />
-			<Container sx={{ background: "pink" }} maxWidth="xl">
-				This is XL
-			</Container>
-		</div>
+		<Box>
+			<List>
+				<ListItem divider>
+					<ListItemButton
+						onClick={() => setOpen((prevOpen) => !prevOpen)}
+					>
+						<ChevronRightIcon />
+						<ListItemText primary={"Expand List"} />
+					</ListItemButton>
+				</ListItem>
+			</List>
+			<Collapse in={open}>
+				<List sx={{ ml: "25px", width: 300, background: "gray" }}>
+					{array.map((item, i) => (
+						<ListItem divider key={i}>
+							<ListItemButton>
+								<ListItemText primary={item} />
+							</ListItemButton>
+						</ListItem>
+					))}
+				</List>
+			</Collapse>
+		</Box>
 	);
 };
 
