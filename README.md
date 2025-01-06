@@ -372,6 +372,8 @@ return (
 
 # Dialog
 
+[**Dialog docs ->**](https://mui.com/material-ui/react-dialog/)
+
 -   A Dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken. Dialogs are purposefully interruptive, so they should be used sparingly.
 
 ```javascript
@@ -390,6 +392,46 @@ const Test = () => {
 					<Button onClick={() => setOpen(false)}> Cancel</Button>
 				</DialogActions>
 			</Dialog>
+		</div>
+	);
+};
+```
+
+# Modal
+
+The modal component provides a solid foundation for creating dialogs, popovers, lightboxes, or whatever else.
+
+-   💄 Manages modal stacking when one-at-a-time just isn't enough.
+-   🔐 Creates a backdrop, for disabling interaction below the modal.
+-   🔐 It disables scrolling of the page content while open.
+-   ♿️ It properly manages focus; moving to the modal content, and keeping it there until the modal is closed.
+-   ♿️ Adds the appropriate ARIA roles automatically.
+
+If you are creating a modal dialog, you probably want to use the Dialog component rather than directly using Modal. Modal is a lower-level construct that is leveraged by the following components:
+
+-   Dialog
+-   Drawer
+-   Menu
+-   Popover
+-   Basic modal
+
+    [**Modal docs ->**](https://mui.com/material-ui/react-modal/)
+
+```javascript
+const Test = () => {
+	const [open, setOpen] = useState(false);
+	return (
+		<div>
+			<Button onClick={() => setOpen(true)}>Open Modal</Button>
+
+			<Modal open={open} onClose={() => setOpen(false)}>
+				<Box position="absolute" top="50%" left="50%">
+					<Typography>This is a Modal</Typography>
+					<Button variant="contained" onClick={() => setOpen(false)}>
+						Close
+					</Button>
+				</Box>
+			</Modal>
 		</div>
 	);
 };

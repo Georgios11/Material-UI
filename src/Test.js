@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
 	AppBar,
+	Box,
 	Button,
 	Card,
 	CardActions,
@@ -18,6 +19,7 @@ import {
 	InputLabel,
 	Menu,
 	MenuItem,
+	Modal,
 	Radio,
 	RadioGroup,
 	Select,
@@ -31,17 +33,16 @@ const Test = () => {
 	const [open, setOpen] = useState(false);
 	return (
 		<div>
-			<Button onClick={() => setOpen(true)}>Open Dialog</Button>
-			<Dialog open={open} onClose={() => setOpen(false)}>
-				<DialogTitle>Dialog Title</DialogTitle>
-				<DialogContent>
-					<DialogContentText>Ask user for action</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => setOpen(false)}> Confirm</Button>
-					<Button onClick={() => setOpen(false)}> Cancel</Button>
-				</DialogActions>
-			</Dialog>
+			<Button onClick={() => setOpen(true)}>Open Modal</Button>
+
+			<Modal open={open} onClose={() => setOpen(false)}>
+				<Box position="absolute" top="50%" left="50%">
+					<Typography>This is a Modal</Typography>
+					<Button variant="contained" onClick={() => setOpen(false)}>
+						Close
+					</Button>
+				</Box>
+			</Modal>
 		</div>
 	);
 };
