@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import {
 	AppBar,
 	Button,
+	Card,
+	CardActions,
+	CardContent,
+	CardMedia,
 	Checkbox,
 	FormControl,
 	FormControlLabel,
@@ -30,20 +34,25 @@ const Test = () => {
 		setAnchorEl(e.currentTarget);
 		setOpen(true);
 	};
+	const imgUrl = "/istockphoto-811210906-1024x1024.jpg";
 	return (
-		<div>
-			<Button variant="contained" onClick={handleClick}>
-				Open Menu
-			</Button>
-			<Button variant="contained" onClick={handleClick}>
-				Open Menu again
-			</Button>
-			<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-				<MenuItem onClick={handleClose}>Profile</MenuItem>
-				<MenuItem onClick={handleClose}>Balance</MenuItem>
-				<MenuItem onClick={handleClose}>Logout</MenuItem>
-			</Menu>
-		</div>
+		<Card sx={{ maxWidth: 345 }}>
+			<CardMedia sx={{ height: 320 }} image={`${imgUrl}`} />
+			<CardContent>
+				<Typography gutterBottom variant="h5" component="div">
+					Lizard
+				</Typography>
+				<Typography variant="body2" sx={{ color: "text.secondary" }}>
+					Lizards are a widespread group of squamate reptiles, with
+					over 6,000 species, ranging across all continents except
+					Antarctica
+				</Typography>
+			</CardContent>
+			<CardActions>
+				<Button size="small">Share</Button>
+				<Button size="small">Learn More</Button>
+			</CardActions>
+		</Card>
 	);
 };
 
