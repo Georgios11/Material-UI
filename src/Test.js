@@ -4,6 +4,7 @@ import {
 	AccordionDetails,
 	AccordionSummary,
 	AppBar,
+	Autocomplete,
 	Box,
 	Button,
 	Card,
@@ -44,46 +45,76 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const Test = () => {
-	const [open, setOpen] = useState(null); // Initialize as null
-
-	const handleAccordionChange = (panel) => {
-		setOpen((prevOpen) => (prevOpen === panel ? null : panel)); // Toggle logic
-	};
+	const states = [
+		"Alabama",
+		"Alaska",
+		"American Samoa",
+		"Arizona",
+		"Arkansas",
+		"California",
+		"Colorado",
+		"Connecticut",
+		"Delaware",
+		"District of Columbia",
+		"Federated States of Micronesia",
+		"Florida",
+		"Georgia",
+		"Guam",
+		"Hawaii",
+		"Idaho",
+		"Illinois",
+		"Indiana",
+		"Iowa",
+		"Kansas",
+		"Kentucky",
+		"Louisiana",
+		"Maine",
+		"Marshall Islands",
+		"Maryland",
+		"Massachusetts",
+		"Michigan",
+		"Minnesota",
+		"Mississippi",
+		"Missouri",
+		"Montana",
+		"Nebraska",
+		"Nevada",
+		"New Hampshire",
+		"New Jersey",
+		"New Mexico",
+		"New York",
+		"North Carolina",
+		"North Dakota",
+		"Northern Mariana Islands",
+		"Ohio",
+		"Oklahoma",
+		"Oregon",
+		"Palau",
+		"Pennsylvania",
+		"Puerto Rico",
+		"Rhode Island",
+		"South Carolina",
+		"South Dakota",
+		"Tennessee",
+		"Texas",
+		"Utah",
+		"Vermont",
+		"Virgin Island",
+		"Virginia",
+		"Washington",
+		"West Virginia",
+		"Wisconsin",
+		"Wyoming",
+	];
 	return (
 		<Box>
-			<Accordion
-				expanded={open === "Accordion 1"}
-				onChange={() => handleAccordionChange("Accordion 1")}
-			>
-				<AccordionSummary expandIcon={<ChevronRightIcon />}>
-					<Typography>Accordion 1</Typography>
-				</AccordionSummary>
-				<AccordionDetails>
-					<Typography>PAOKARA OLE</Typography>
-				</AccordionDetails>
-			</Accordion>
-			<Accordion
-				expanded={open === "Accordion 2"}
-				onChange={() => handleAccordionChange("Accordion 2")}
-			>
-				<AccordionSummary expandIcon={<ChevronRightIcon />}>
-					<Typography>Accordion 2</Typography>
-				</AccordionSummary>
-				<AccordionDetails>
-					<Typography>PAOKARA OLE</Typography>
-				</AccordionDetails>
-			</Accordion>
-			<Accordion
-				expanded={open === "Accordion 3"}
-				onChange={() => handleAccordionChange("Accordion 3")}
-			>
-				<AccordionSummary expandIcon={<ChevronRightIcon />}>
-					<Typography>Accordion 3</Typography>
-				</AccordionSummary>
-				<AccordionDetails>
-					<Typography>PAOKARA OLE</Typography>
-				</AccordionDetails>
-			</Accordion>
+			<Autocomplete
+				sx={{ width: 300 }}
+				options={states}
+				renderInput={(params) => (
+					<TextField {...params} label="List of states" />
+				)}
+			/>
 		</Box>
 	);
 };
