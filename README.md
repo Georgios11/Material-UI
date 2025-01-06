@@ -373,3 +373,24 @@ return (
 # Dialog
 
 -   A Dialog is a type of modal window that appears in front of app content to provide critical information or ask for a decision. Dialogs disable all app functionality when they appear, and remain on screen until confirmed, dismissed, or a required action has been taken. Dialogs are purposefully interruptive, so they should be used sparingly.
+
+```javascript
+const Test = () => {
+	const [open, setOpen] = useState(false);
+	return (
+		<div>
+			<Button onClick={() => setOpen(true)}>Open Dialog</Button>
+			<Dialog open={open} onClose={() => setOpen(false)}>
+				<DialogTitle>Dialog Title</DialogTitle>
+				<DialogContent>
+					<DialogContentText>Ask user for action</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => setOpen(false)}> Confirm</Button>
+					<Button onClick={() => setOpen(false)}> Cancel</Button>
+				</DialogActions>
+			</Dialog>
+		</div>
+	);
+};
+```
