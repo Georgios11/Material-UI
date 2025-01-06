@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
 	AppBar,
 	Box,
 	Button,
@@ -41,32 +44,46 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const Test = () => {
-	const array = ["First", "Second", "Third"];
+	const [open, setOpen] = useState(null); // Initialize as null
 
-	const [open, setOpen] = useState(false);
+	const handleAccordionChange = (panel) => {
+		setOpen((prevOpen) => (prevOpen === panel ? null : panel)); // Toggle logic
+	};
 	return (
 		<Box>
-			<List>
-				<ListItem divider>
-					<ListItemButton
-						onClick={() => setOpen((prevOpen) => !prevOpen)}
-					>
-						<ChevronRightIcon />
-						<ListItemText primary={"Expand List"} />
-					</ListItemButton>
-				</ListItem>
-			</List>
-			<Collapse in={open}>
-				<List sx={{ ml: "25px", width: 300, background: "gray" }}>
-					{array.map((item, i) => (
-						<ListItem divider key={i}>
-							<ListItemButton>
-								<ListItemText primary={item} />
-							</ListItemButton>
-						</ListItem>
-					))}
-				</List>
-			</Collapse>
+			<Accordion
+				expanded={open === "Accordion 1"}
+				onChange={() => handleAccordionChange("Accordion 1")}
+			>
+				<AccordionSummary expandIcon={<ChevronRightIcon />}>
+					<Typography>Accordion 1</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>PAOKARA OLE</Typography>
+				</AccordionDetails>
+			</Accordion>
+			<Accordion
+				expanded={open === "Accordion 2"}
+				onChange={() => handleAccordionChange("Accordion 2")}
+			>
+				<AccordionSummary expandIcon={<ChevronRightIcon />}>
+					<Typography>Accordion 2</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>PAOKARA OLE</Typography>
+				</AccordionDetails>
+			</Accordion>
+			<Accordion
+				expanded={open === "Accordion 3"}
+				onChange={() => handleAccordionChange("Accordion 3")}
+			>
+				<AccordionSummary expandIcon={<ChevronRightIcon />}>
+					<Typography>Accordion 3</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>PAOKARA OLE</Typography>
+				</AccordionDetails>
+			</Accordion>
 		</Box>
 	);
 };

@@ -549,3 +549,61 @@ const Test = () => {
 	);
 };
 ```
+
+# Accordion
+
+[**Accordion docs ->**](https://mui.com/material-ui/react-accordion/)
+
+The Material UI Accordion component includes several complementary utility components to handle various use cases:
+
+-   Accordion: the wrapper for grouping related components.
+-   Accordion Summary: the wrapper for the - Accordion header, which expands or collapses the content when clicked.
+-   Accordion Details: the wrapper for the - Accordion content.
+-   Accordion Actions: an optional wrapper that groups a set of buttons.
+
+```javascript
+const Test = () => {
+	const [open, setOpen] = useState(null); // Initialize as null
+
+	const handleAccordionChange = (panel) => {
+		setOpen((prevOpen) => (prevOpen === panel ? null : panel)); // Toggle logic
+	};
+	return (
+		<Box>
+			<Accordion
+				expanded={open === "Accordion 1"}
+				onChange={() => handleAccordionChange("Accordion 1")}
+			>
+				<AccordionSummary expandIcon={<ChevronRightIcon />}>
+					<Typography>Accordion 1</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>PAOKARA OLE</Typography>
+				</AccordionDetails>
+			</Accordion>
+			<Accordion
+				expanded={open === "Accordion 2"}
+				onChange={() => handleAccordionChange("Accordion 2")}
+			>
+				<AccordionSummary expandIcon={<ChevronRightIcon />}>
+					<Typography>Accordion 2</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>PAOKARA OLE</Typography>
+				</AccordionDetails>
+			</Accordion>
+			<Accordion
+				expanded={open === "Accordion 3"}
+				onChange={() => handleAccordionChange("Accordion 3")}
+			>
+				<AccordionSummary expandIcon={<ChevronRightIcon />}>
+					<Typography>Accordion 3</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>PAOKARA OLE</Typography>
+				</AccordionDetails>
+			</Accordion>
+		</Box>
+	);
+};
+```
