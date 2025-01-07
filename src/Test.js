@@ -1,118 +1,54 @@
 import React, { useEffect, useState } from "react";
-import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Alert,
-	AppBar,
-	Autocomplete,
-	Box,
-	Button,
-	Card,
-	CardActions,
-	CardContent,
-	CardMedia,
-	Checkbox,
-	CircularProgress,
-	Collapse,
-	Container,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
-	Drawer,
-	FormControl,
-	FormControlLabel,
-	FormGroup,
-	Icon,
-	ImageList,
-	ImageListItem,
-	ImageListItemBar,
-	InputLabel,
-	LinearProgress,
-	Link,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemIcon,
-	ListItemText,
-	Menu,
-	MenuItem,
-	Modal,
-	Radio,
-	RadioGroup,
-	Rating,
-	Select,
-	Snackbar,
-	Tab,
-	Tabs,
-	TextField,
-	Toolbar,
-	Typography,
-} from "@mui/material";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { DataGrid } from "@mui/x-data-grid";
 
-import { useForm } from "react-hook-form";
+import { Box } from "@mui/material";
 const Test = () => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
-	console.log(errors);
-	const [isSubmitted, setIsSubmitted] = useState(false);
+	const columns = [
+		{ field: "id", headerName: "ID", width: 90 },
+		{
+			field: "firstName",
+			headerName: "First name",
+			width: 150,
+			editable: true,
+		},
+		{
+			field: "lastName",
+			headerName: "Last name",
+			width: 150,
+			editable: true,
+		},
+		{
+			field: "age",
+			headerName: "Age",
+			type: "number",
+			width: 110,
+			editable: true,
+		},
+		{
+			field: "fullName",
+			headerName: "Full name",
+			description: "This column has a value getter and is not sortable.",
+			sortable: false,
+			width: 160,
+			valueGetter: (value, row) =>
+				`${row.firstName || ""} ${row.lastName || ""}`,
+		},
+	];
 
-	const onSubmit = (data) => {
-		console.log(data);
-		setIsSubmitted(true);
-	};
-	console.log("rendered");
+	const rows = [
+		{ id: 1, lastName: "Snow", firstName: "Jon", age: 14 },
+		{ id: 2, lastName: "Lannister", firstName: "Cersei", age: 31 },
+		{ id: 3, lastName: "Lannister", firstName: "Jaime", age: 31 },
+		{ id: 4, lastName: "Stark", firstName: "Arya", age: 11 },
+		{ id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
+		{ id: 6, lastName: "Melisandre", firstName: null, age: 150 },
+		{ id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
+		{ id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
+		{ id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+	];
 	return (
 		<Box>
-			<form
-				onSubmit={handleSubmit(onSubmit)}
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					gap: "2em",
-					maxWidth: "60%",
-					margin: "100px auto",
-				}}
-			>
-				<TextField
-					// type={"email"}
-					error={Boolean(errors.email)}
-					helperText={
-						Boolean(errors.email) && (
-							<Typography>Invalid email</Typography>
-						)
-					}
-					{...register("email", {
-						validate: (val) =>
-							/^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim.test(
-								val,
-							),
-					})}
-				/>
-				<TextField
-					type={"password"}
-					error={Boolean(errors.password)}
-					{...register("password", { minLength: 6, required: true })}
-					helperText={
-						Boolean(errors.email) && (
-							<Typography>Too short Password</Typography>
-						)
-					}
-				/>
-				<Button
-					variant="contained"
-					type="submit"
-					disabled={Boolean(errors.email) || Boolean(errors.password)}
-				>
-					Submit
-				</Button>
-			</form>
+			<DataGrid onCellEditCommit columns={columns} rows={rows}></DataGrid>
 		</Box>
 	);
 };
