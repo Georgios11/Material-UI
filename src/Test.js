@@ -39,6 +39,7 @@ import {
 	Modal,
 	Radio,
 	RadioGroup,
+	Rating,
 	Select,
 	Snackbar,
 	Tab,
@@ -50,24 +51,20 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const Test = () => {
+	const [rating, setRating] = useState(0);
 	return (
 		<Box>
-			<CircularProgress />
+			<Rating size="large" />
 			<br />
-			<CircularProgress variant="determinate" value={10} />
+			<Rating size="medium" />
 			<br />
-			<CircularProgress variant="determinate" value={50} />
-			<br />
-			<CircularProgress variant="determinate" value={80} />
-			<br />
-			<LinearProgress color="secondary" />
-			<br />
-			<LinearProgress
-				color="success"
-				variant="determinate"
-				value={33}
-				sx={{ width: "30%" }}
+			<Rating
+				size="small"
+				value={rating}
+				onChange={(e, value) => setRating(value)}
+				precision={0.5}
 			/>
+			<Typography>Rated {rating}</Typography>
 		</Box>
 	);
 };

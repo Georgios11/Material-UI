@@ -819,3 +819,30 @@ const Test = () => {
 	);
 };
 ```
+
+# Rating
+
+-   Ratings provide insight regarding others' opinions and experiences, and can allow the user to submit a rating of their own.
+
+[**Rating docs ->**](https://mui.com/material-ui/react-rating/)
+
+```javascript
+const Test = () => {
+	const [rating, setRating] = useState(0);
+	return (
+		<Box>
+			<Rating size="large" />
+			<br />
+			<Rating size="medium" />
+			<br />
+			<Rating
+				size="small"
+				value={rating}
+				onChange={(e, value) => setRating(value)}
+				precision={0.5}
+			/>
+			<Typography>Rated {rating}</Typography>
+		</Box>
+	);
+};
+```
