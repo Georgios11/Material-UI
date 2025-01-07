@@ -698,3 +698,36 @@ export default Test;
 [**Drawer docs ->**](https://mui.com/material-ui/react-drawer/)
 
 The navigation drawers (or "sidebars") provide ergonomic access to destinations in a site or app functionality such as switching accounts.
+
+```javascript
+const Test = () => {
+	const optionsArr = ["Profile", "Balance", "Logout"];
+
+	const [isOpen, setIsOpen] = useState(false);
+	return (
+		<Box>
+			<Button onClick={() => setIsOpen((open) => !open)}>
+				{isOpen ? "Close" : "Open"}
+			</Button>
+			<Drawer
+				anchor="right"
+				open={isOpen}
+				onClose={() => setIsOpen(false)}
+			>
+				<List>
+					{optionsArr.map((opt, i) => (
+						<ListItemButton
+							key={i}
+							onClick={() => setIsOpen(false)}
+						>
+							<ListItemText primary={opt} />
+						</ListItemButton>
+					))}
+				</List>
+			</Drawer>
+		</Box>
+	);
+};
+
+export default Test;
+```
