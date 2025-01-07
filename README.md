@@ -785,3 +785,37 @@ const Test = () => {
 	);
 };
 ```
+
+# Progress
+
+Progress indicators inform users about the status of ongoing processes, such as loading an app, submitting a form, or saving updates.
+
+-   **Determinate** indicators display how long an operation will take.
+-   **Indeterminate** indicators visualize an unspecified wait time.
+
+[**Progress docs ->**](https://mui.com/material-ui/react-progress/)
+
+```javascript
+const Test = () => {
+	return (
+		<Box>
+			<CircularProgress />
+			<br />
+			<CircularProgress variant="determinate" value={10} />
+			<br />
+			<CircularProgress variant="determinate" value={50} />
+			<br />
+			<CircularProgress variant="determinate" value={80} />
+			<br />
+			<LinearProgress color="secondary" />
+			<br />
+			<LinearProgress
+				color="success"
+				variant="determinate"
+				value={33}
+				sx={{ width: "30%" }}
+			/>
+		</Box>
+	);
+};
+```

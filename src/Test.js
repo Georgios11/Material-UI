@@ -13,6 +13,7 @@ import {
 	CardContent,
 	CardMedia,
 	Checkbox,
+	CircularProgress,
 	Collapse,
 	Container,
 	Dialog,
@@ -26,6 +27,7 @@ import {
 	FormGroup,
 	Icon,
 	InputLabel,
+	LinearProgress,
 	Link,
 	List,
 	ListItem,
@@ -48,23 +50,24 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const Test = () => {
-	const [isOpen, setIsOpen] = useState(true);
 	return (
 		<Box>
-			{/* <Snackbar
-				message="Snackbar"
-				open={isOpen}
-				onClose={() => setIsOpen(false)}
-				// autoHideDuration={2000}
-			/> */}
-			<Snackbar
-				message="Snackbar"
-				open={isOpen}
-				onClose={() => setIsOpen(false)}
-				autoHideDuration={2000}
-			>
-				<Alert severity="success">Success</Alert>
-			</Snackbar>
+			<CircularProgress />
+			<br />
+			<CircularProgress variant="determinate" value={10} />
+			<br />
+			<CircularProgress variant="determinate" value={50} />
+			<br />
+			<CircularProgress variant="determinate" value={80} />
+			<br />
+			<LinearProgress color="secondary" />
+			<br />
+			<LinearProgress
+				color="success"
+				variant="determinate"
+				value={33}
+				sx={{ width: "30%" }}
+			/>
 		</Box>
 	);
 };
