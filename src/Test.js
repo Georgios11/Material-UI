@@ -3,6 +3,7 @@ import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
+	Alert,
 	AppBar,
 	Autocomplete,
 	Box,
@@ -46,30 +47,19 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const Test = () => {
-	const optionsArr = ["Profile", "Balance", "Logout"];
-
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(true);
 	return (
 		<Box>
-			<Button onClick={() => setIsOpen((open) => !open)}>
-				{isOpen ? "Close" : "Open"}
-			</Button>
-			<Drawer
-				anchor="right"
-				open={isOpen}
-				onClose={() => setIsOpen(false)}
-			>
-				<List>
-					{optionsArr.map((opt, i) => (
-						<ListItemButton
-							key={i}
-							onClick={() => setIsOpen(false)}
-						>
-							<ListItemText primary={opt} />
-						</ListItemButton>
-					))}
-				</List>
-			</Drawer>
+			{isOpen && (
+				<Alert
+					severity="success"
+					onClose={() => {
+						setIsOpen(false);
+					}}
+				>
+					Alert
+				</Alert>
+			)}
 		</Box>
 	);
 };

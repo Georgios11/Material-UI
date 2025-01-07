@@ -731,3 +731,27 @@ const Test = () => {
 
 export default Test;
 ```
+
+# Alert
+
+[**Alert docs ->**](https://mui.com/material-ui/react-alert/)
+
+```javascript
+const Test = () => {
+	const [isOpen, setIsOpen] = useState(true);
+	return (
+		<Box>
+			{isOpen && (
+				<Alert
+					severity="success"
+					onClose={() => {
+						setIsOpen(false);
+					}}
+				>
+					Alert
+				</Alert>
+			)}
+		</Box>
+	);
+};
+```
