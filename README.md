@@ -1083,8 +1083,10 @@ import React, { useEffect, useState } from "react";
 
 const Data = () => {
 	const [todos, setTodos] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
 		const fetchTodos = async () => {
+			setI;
 			try {
 				const response = await fetch("https://dummyjson.com/todos");
 				const data = await response.json();
