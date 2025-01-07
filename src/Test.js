@@ -53,78 +53,66 @@ import {
 } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
+import { useForm } from "react-hook-form";
 const Test = () => {
-	const itemData = [
-		{
-			img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-			title: "Breakfast",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-			title: "Burger",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-			title: "Camera",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-			title: "Coffee",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
-			title: "Hats",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-			title: "Honey",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-			title: "Basketball",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-			title: "Fern",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-			title: "Mushrooms",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
-			title: "Tomato basil",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-			title: "Sea star",
-		},
-		{
-			img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
-			title: "Bike",
-		},
-	];
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+	console.log(errors);
+	const [isSubmitted, setIsSubmitted] = useState(false);
+
+	const onSubmit = (data) => {
+		console.log(data);
+		setIsSubmitted(true);
+	};
+	console.log("rendered");
 	return (
 		<Box>
-			<ImageList
-				sx={{ width: 400, height: 400 }}
-				cols={3}
-				// variant="masonry"
-				// variant="quilted"
-				// variant="woven"
-				variant="standard"
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					gap: "2em",
+					maxWidth: "60%",
+					margin: "100px auto",
+				}}
 			>
-				{itemData.map((item, i) => (
-					<ImageListItem key={i}>
-						<img src={item.img} alt="item.title" loading="lazy" />
-						<ImageListItemBar
-							position="below"
-							subtitle={<span>PAOK</span>}
-							title={item.title}
-						/>
-					</ImageListItem>
-				))}
-			</ImageList>
+				<TextField
+					// type={"email"}
+					error={Boolean(errors.email)}
+					helperText={
+						Boolean(errors.email) && (
+							<Typography>Invalid email</Typography>
+						)
+					}
+					{...register("email", {
+						validate: (val) =>
+							/^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim.test(
+								val,
+							),
+					})}
+				/>
+				<TextField
+					type={"password"}
+					error={Boolean(errors.password)}
+					{...register("password", { minLength: 6, required: true })}
+					helperText={
+						Boolean(errors.email) && (
+							<Typography>Too short Password</Typography>
+						)
+					}
+				/>
+				<Button
+					variant="contained"
+					type="submit"
+					disabled={Boolean(errors.email) || Boolean(errors.password)}
+				>
+					Submit
+				</Button>
+			</form>
 		</Box>
 	);
 };
