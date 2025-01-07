@@ -38,6 +38,7 @@ import {
 	Radio,
 	RadioGroup,
 	Select,
+	Snackbar,
 	Tab,
 	Tabs,
 	TextField,
@@ -50,16 +51,20 @@ const Test = () => {
 	const [isOpen, setIsOpen] = useState(true);
 	return (
 		<Box>
-			{isOpen && (
-				<Alert
-					severity="success"
-					onClose={() => {
-						setIsOpen(false);
-					}}
-				>
-					Alert
-				</Alert>
-			)}
+			{/* <Snackbar
+				message="Snackbar"
+				open={isOpen}
+				onClose={() => setIsOpen(false)}
+				// autoHideDuration={2000}
+			/> */}
+			<Snackbar
+				message="Snackbar"
+				open={isOpen}
+				onClose={() => setIsOpen(false)}
+				autoHideDuration={2000}
+			>
+				<Alert severity="success">Success</Alert>
+			</Snackbar>
 		</Box>
 	);
 };

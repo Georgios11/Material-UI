@@ -755,3 +755,33 @@ const Test = () => {
 	);
 };
 ```
+
+# Snackbar
+
+-   Snackbars **(also known as toasts)** are used for brief notifications of processes that have been or will be performed.
+
+[**Snackbar docs ->**](https://mui.com/material-ui/react-snackbar/)
+
+```javascript
+const Test = () => {
+	const [isOpen, setIsOpen] = useState(true);
+	return (
+		<Box>
+			{/* <Snackbar
+				message="Snackbar"
+				open={isOpen}
+				onClose={() => setIsOpen(false)}
+				// autoHideDuration={2000}
+			/> */}
+			<Snackbar
+				message="Snackbar"
+				open={isOpen}
+				onClose={() => setIsOpen(false)}
+				autoHideDuration={2000}
+			>
+				<Alert severity="success">Success</Alert>
+			</Snackbar>
+		</Box>
+	);
+};
+```
