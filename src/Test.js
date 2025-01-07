@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
 import { Box } from "@mui/material";
+import Data from "./Data";
 const Test = () => {
 	const columns = [
 		{ field: "id", headerName: "ID", width: 90 },
@@ -47,9 +48,16 @@ const Test = () => {
 		{ id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 	];
 	return (
-		<Box>
-			<DataGrid onCellEditCommit columns={columns} rows={rows}></DataGrid>
-		</Box>
+		<>
+			<Box>
+				<DataGrid
+					onCellEditCommit
+					columns={columns}
+					rows={rows}
+				></DataGrid>
+			</Box>
+			<Data />
+		</>
 	);
 };
 

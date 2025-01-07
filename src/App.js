@@ -1,9 +1,10 @@
+import Data from "./Data";
 import Test from "./Test";
 
 function App() {
 	return (
 		<div>
-			<Test />
+			<Data />
 		</div>
 	);
 }
