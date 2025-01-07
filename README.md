@@ -692,3 +692,9 @@ const Test = () => {
 
 export default Test;
 ```
+
+# Drawer
+
+[**Drawer docs ->**](https://mui.com/material-ui/react-drawer/)
+
+The navigation drawers (or "sidebars") provide ergonomic access to destinations in a site or app functionality such as switching accounts.

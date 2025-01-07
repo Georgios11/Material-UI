@@ -19,6 +19,7 @@ import {
 	DialogContent,
 	DialogContentText,
 	DialogTitle,
+	Drawer,
 	FormControl,
 	FormControlLabel,
 	FormGroup,
@@ -45,76 +46,30 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const Test = () => {
-	const states = [
-		"Alabama",
-		"Alaska",
-		"American Samoa",
-		"Arizona",
-		"Arkansas",
-		"California",
-		"Colorado",
-		"Connecticut",
-		"Delaware",
-		"District of Columbia",
-		"Federated States of Micronesia",
-		"Florida",
-		"Georgia",
-		"Guam",
-		"Hawaii",
-		"Idaho",
-		"Illinois",
-		"Indiana",
-		"Iowa",
-		"Kansas",
-		"Kentucky",
-		"Louisiana",
-		"Maine",
-		"Marshall Islands",
-		"Maryland",
-		"Massachusetts",
-		"Michigan",
-		"Minnesota",
-		"Mississippi",
-		"Missouri",
-		"Montana",
-		"Nebraska",
-		"Nevada",
-		"New Hampshire",
-		"New Jersey",
-		"New Mexico",
-		"New York",
-		"North Carolina",
-		"North Dakota",
-		"Northern Mariana Islands",
-		"Ohio",
-		"Oklahoma",
-		"Oregon",
-		"Palau",
-		"Pennsylvania",
-		"Puerto Rico",
-		"Rhode Island",
-		"South Carolina",
-		"South Dakota",
-		"Tennessee",
-		"Texas",
-		"Utah",
-		"Vermont",
-		"Virgin Island",
-		"Virginia",
-		"Washington",
-		"West Virginia",
-		"Wisconsin",
-		"Wyoming",
-	];
+	const optionsArr = ["Profile", "Balance", "Logout"];
+
+	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<Box>
-			<Autocomplete
-				sx={{ width: 300 }}
-				options={states}
-				renderInput={(params) => (
-					<TextField {...params} label="List of states" />
-				)}
-			/>
+			<Button onClick={() => setIsOpen((open) => !open)}>
+				{isOpen ? "Close" : "Open"}
+			</Button>
+			<Drawer
+				anchor="right"
+				open={isOpen}
+				onClose={() => setIsOpen(false)}
+			>
+				<List>
+					{optionsArr.map((opt, i) => (
+						<ListItemButton
+							key={i}
+							onClick={() => setIsOpen(false)}
+						>
+							<ListItemText primary={opt} />
+						</ListItemButton>
+					))}
+				</List>
+			</Drawer>
 		</Box>
 	);
 };
