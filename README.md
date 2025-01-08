@@ -1075,3 +1075,60 @@ const Test = () => {
 
 export default Test;
 ```
+
+# Theming and Styling
+
+## Theme Provider
+
+[**HTML Color Codes ->**](https://htmlcolorcodes.com/)
+
+```javascript
+const theme = useTheme();
+console.log(theme);
+```
+
+-   create theme.js
+
+```javascript
+import { createTheme } from "@mui/material";
+
+export const theme = createTheme({
+	palette: {
+		primary: {
+			main: "#f4005e",
+		},
+	},
+	typography: {
+		h1: {
+			fontSize: "8rem",
+		},
+	},
+});
+```
+
+-   In index.js
+
+```javascript
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+import { ThemeProvider } from "@emotion/react";
+import { theme } from "./theme";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+	<React.StrictMode>
+		<ThemeProvider theme={theme}>
+			<App />
+		</ThemeProvider>
+	</React.StrictMode>,
+);
+```
+
+-   Use
+
+```javascript
+<Typography variant="h3" color="primary">
+	PAOK
+</Typography>
+```
